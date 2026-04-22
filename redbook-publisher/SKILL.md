@@ -1,9 +1,9 @@
 ---
-name: xiaohongshu-markdown-cards
-description: Use when turning Markdown, notes, articles, course transcripts, technical explanations, or knowledge documents into Xiaohongshu-style image cards, social media carousel posts, vertical PNG cards, publish-ready Chinese visual summaries, or Xiaohongshu post copy.
+name: redbook-publisher
+description: Use when turning Markdown, notes, articles, course transcripts, technical explanations, or knowledge documents into Xiaohongshu/Redbook-style image cards, social media carousel posts, vertical PNG cards, publish-ready Chinese visual summaries, or Xiaohongshu/Redbook post copy.
 ---
 
-# Xiaohongshu Markdown Cards
+# Redbook Publisher
 
 ## Purpose
 
@@ -65,6 +65,9 @@ Write for Xiaohongshu, but keep intellectual honesty.
 - Keep one main idea per card.
 - Use bold emphasis sparingly when outputting Markdown plans.
 - Use natural Chinese punctuation and rhythm.
+- For publish-ready Xiaohongshu post body copy, target about 400 Chinese characters. A good range is 350-450 Chinese characters; do not exceed 500 unless the user explicitly asks for a longer post.
+- Add tasteful emojis to the publish-ready post body when appropriate. Use about 3-6 emojis total, no more than one emoji in a short paragraph, and prefer functional cues such as `✅`, `👇`, `📌`, `✨`, `🧠`, `🚀`, `🔍`, `💡`.
+- Emojis should guide rhythm and readability, not decorate every sentence. For technical or senior-professional content, keep emojis restrained and do not insert them inside technical terms, code, API names, or precise concepts.
 
 ## Publish Copy Markdown File
 
@@ -79,11 +82,11 @@ The Markdown file should contain copy the user can paste directly into Xiaohongs
 [20-28 字优先，清楚、有钩子、不夸张]
 
 ## 正文
-[开头 1-2 句抓住痛点或收益]
+[约 400 字，建议 350-450 字；开头 1-2 句抓住痛点或收益，可加入 1 个自然表情符号]
 
-[分段说明核心内容，每段短，适合手机阅读]
+[分段说明核心内容，每段短，适合手机阅读；全文适当加入 3-6 个表情符号，例如 ✅、👇、📌、✨、🧠、🚀、🔍、💡]
 
-[结尾引导收藏、复盘、评论或行动]
+[结尾引导收藏、复盘、评论或行动；语气自然，不要硬广]
 
 ## 话题标签
 #标签1 #标签2 #标签3 #标签4 #标签5
@@ -105,6 +108,8 @@ For technical content, the publish copy should sound like a senior practitioner 
 - "如果你在做 AI 应用开发，建议把这个问题想清楚。"
 
 Keep the post body aligned with the generated cards. Do not introduce major claims that are not represented in the carousel.
+
+Before finalizing publish copy, roughly estimate the body length. If it is far below 350 Chinese characters, add one useful example, contrast, or takeaway. If it is above 500 Chinese characters, compress repeated explanation and keep only the strongest points.
 
 ## Visual Direction
 
@@ -180,5 +185,7 @@ Before finishing, check:
 - The visual system is consistent across cards.
 - Text is concise enough for a real Xiaohongshu image.
 - The publish copy Markdown can be pasted directly into Xiaohongshu without rewriting.
+- The publish-ready post body is about 400 Chinese characters, preferably 350-450 and not above 500 unless requested.
+- The post body uses a few appropriate emojis to improve rhythm, without harming professionalism.
 - The title, body, hashtags, and first comment match the actual carousel content.
 - The result feels publishable, not like a document screenshot.

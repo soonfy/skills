@@ -1,4 +1,4 @@
 interface:
   display_name: "AI Daily Interviews"
-  short_description: "Save Obsidian interview study notes"
-  default_prompt: "Use $ai-daily-interviews to explain a backend, AI, or agent engineering topic, generate deep interview Q&A, save it as an interview- Markdown note, and include the content in chat."
+  short_description: "Save P7/P8 interview study notes"
+  default_prompt: "Use $ai-daily-interviews to explain a backend, AI, or agent engineering topic at Big Tech P7/P8 depth, generate complete deep interview Q&A, save it as an interview- Markdown note, and include the content in chat."

@@ -1,0 +1,7 @@
+interface:
+  display_name: "P7/P8 Interview Q&A"
+  short_description: "Create a Markdown interview drill with three senior Q&A items."
+  default_prompt: "Use $p7p8-interview-qa to turn this knowledge point into an interview-*.md file with 3 Alibaba/Tencent/Meituan P7/P8 interview questions, complete answers, and one realistic scenario thread."
+
+policy:
+  allow_implicit_invocation: true

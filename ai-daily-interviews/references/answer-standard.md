@@ -4,9 +4,20 @@ Use this reference to generate high-signal programmer knowledge lessons and inte
 
 ## Default Audience
 
-- Backend or platform engineer preparing for mid-to-senior interviews.
-- Assume the reader can code but needs systematic knowledge, internals, tradeoffs, and production reasoning.
+- Backend or platform engineer preparing for Big Tech P7/P8+ interviews.
+- Assume the reader can code and has project experience, but needs systematic knowledge, internals, tradeoffs, production reasoning, and high-pressure interview expression.
 - Default language: Chinese.
+
+## Target Depth
+
+The artifact should help the user answer like a senior engineer, not a keyword memorizer.
+
+Target level:
+
+- P7: can independently own important production modules, explain design tradeoffs, debug incidents, and connect implementation details to business-facing reliability.
+- P8+: can reason across architecture, scale, failure domains, capacity, consistency, maintainability, and organizational cost; can push back on unsafe assumptions in an interview.
+
+For broad topics such as Redis, MySQL, JVM, operating systems, networks, or message queues, the output must be closer to a complete interview preparation guide than a short note.
 
 ## Artifact Structure
 
@@ -50,7 +61,7 @@ reading_time: 30
 ## 4. 面试问答
 ### Q1. <深度问题>
 - 考察点：
-- 系统回答：
+- 完整回答：
 - 原理：
 - 源码/实现：
 - 场景：
@@ -70,6 +81,24 @@ reading_time: 30
 
 ## 7. 复习清单
 ```
+
+For broad domains, insert these sections before `## 4. 面试问答`:
+
+```markdown
+## 4. 阶段化学习路径
+### 第一阶段：基础使用
+### 第二阶段：核心机制
+### 第三阶段：高并发与分布式
+### 第四阶段：源码/底层原理
+### 第五阶段：实战项目与面试表达
+
+## 5. 高频面试地图
+
+## 6. 冲刺计划
+### Day 1 ...
+```
+
+Then continue with deep Q&A and adjust numbering naturally.
 
 ## Obsidian Metadata Rules
 
@@ -102,6 +131,20 @@ For every important topic, cover these layers:
 5. Production layer: observability, tuning knobs, capacity, incident patterns, and rollback strategy.
 6. Interview layer: what the interviewer is really testing and what follow-up pressure reveals.
 
+## P7/P8+ Depth Rubric
+
+A P7/P8+ answer must include more than "what it is":
+
+1. Conclusion: answer the question directly in the first 1-2 sentences.
+2. Mechanism: explain the invariant or execution path underneath.
+3. Implementation: mention concrete data structures, algorithms, modules, files, protocols, or configuration knobs when known.
+4. Production: describe at least one real scenario, including symptom, diagnosis, mitigation, and residual risk.
+5. Tradeoff: say why this solution is chosen and what it costs.
+6. Metrics: name observable signals such as p95/p99 latency, cache hit rate, slowlog, CPU, memory fragmentation, replication lag, lock wait, GC pause, queue depth, or error rate.
+7. Follow-up defense: include how to answer the likely next question from the interviewer.
+
+If an answer only contains definitions or bullets without explanation, it fails this standard.
+
 ## Question Design Rules
 
 - Generate 5-8 questions for a focused topic, 8-12 for broad interview prep.
@@ -109,6 +152,56 @@ For every important topic, cover these layers:
 - Include one source-code/internals question, one production troubleshooting question, and one optimization/design question.
 - Questions should be answerable without memorizing obscure line numbers, but the answers should mention concrete implementation details.
 - Avoid questions whose answer is only a definition.
+- For broad topics, include a learning-path section and a sprint-plan section before the Q&A.
+- For every Q&A item, write a complete answer. Do not leave "考察点/原理/场景/优化" as labels without full content.
+- Make Q&A progressively harder: warm-up, internals, production incident, system design, tradeoff challenge, and follow-up pressure.
+
+## Complete Answer Contract
+
+Every interview answer must use this contract unless the user requests a shorter format:
+
+```markdown
+### Q1. <问题>
+
+- 考察点：<面试官真正想验证什么能力。>
+- 完整回答：
+  <先给直接结论，再用 2-5 段把机制、边界和场景讲完整。内容要像 1-3 分钟口述回答，而不是关键词清单。>
+- 原理展开：
+  1. <关键机制 1>
+  2. <关键机制 2>
+  3. <关键机制 3>
+- 源码/实现视角：
+  <提到典型数据结构、模块、算法、协议或配置；不确定版本时说明依赖版本。>
+- 生产场景：
+  <给出真实工程场景：流量、症状、风险、排查路径、治理方案。>
+- 优化与监控：
+  <列出优化手段和可观测指标。>
+- 常见误区：
+  <指出候选人容易答错或答浅的点。>
+- 追问：
+  <给出 2-3 个面试官可能继续追的问题。>
+```
+
+The `完整回答` field is mandatory and must be substantive.
+
+## Broad Topic Playbook
+
+When the user asks only for a broad domain, such as "Redis", "MySQL", "JVM", "操作系统", or "计算机网络", do not jump directly into scattered Q&A. Produce a complete path:
+
+1. 学习全景图：explain what mastery means.
+2. 阶段化学习路径：divide into 4-6 phases with time suggestions.
+3. 每阶段必须掌握：concepts, internals, common commands/APIs, and interview expressions.
+4. 高频面试题：group by basics, internals, high concurrency, distributed systems, production troubleshooting, and system design.
+5. 实战项目：recommend at least one project or production scenario that proves ability.
+6. 冲刺计划：for interview prep, provide a 7-day or 14-day plan with daily goals and answer templates.
+7. Deep Q&A：write complete answers for the most important questions.
+
+Example expectations for Redis:
+
+- Include five layers: basics, core data structures, high concurrency/distributed features, internals/source perspective, production scenarios/interview expression.
+- Cover SDS, dict, incremental rehash, quicklist/listpack, skiplist, single-threaded command execution, IO multiplexing, Redis 6+ IO threading, RDB/AOF, replication, Sentinel, Cluster slots, eviction, expiration, big key, hot key, cache penetration/breakdown/avalanche, distributed locks, delay queues, rate limiting, streams, and leaderboard scenarios when relevant.
+- Include a sprint plan such as Day 1 "Redis 为什么快", Day 2 "数据结构", Day 3 "缓存问题", Day 4 "持久化", Day 5 "主从/哨兵", Day 6 "Cluster", Day 7 "分布式锁/实战", then deepen with memory, big key/hot key, source, project, and mock interviews if using a 14-day plan.
+- Every high-frequency question needs a complete answer, not only a topic list.
 
 ## Related Knowledge Recommendations
 
@@ -145,6 +238,8 @@ Each answer should include:
 - Practical example from production.
 - Optimization and monitoring signals.
 - Common mistakes and interviewer follow-ups.
+- P7/P8-level tradeoff analysis: explain why this approach works, what it costs, and when it breaks.
+- A defensible answer to the likely next follow-up.
 
 ## Domain Prompts
 
@@ -208,6 +303,25 @@ Good interview directions:
 - Why distributed locks are hard and when Redlock is or is not enough.
 - How persistence settings affect latency and data loss windows.
 
+For a broad Redis request, include:
+
+- A 0-to-interview learning map with five levels: basic usage, data structures, high concurrency/distributed features, internals/source perspective, and production/interview expression.
+- A staged path with suggested timing and explicit "必须掌握" items.
+- A high-frequency interview map covering fundamentals, internals, high concurrency, distributed systems, production incidents, and design scenarios.
+- A sprint plan, preferably 14 days when the user wants interview preparation.
+- Complete answers for core questions such as:
+  - Redis 为什么快？
+  - Redis 真的是单线程吗？
+  - SDS 为什么不用 C 字符串？
+  - 跳表为什么适合 Redis ZSet？
+  - 缓存穿透、击穿、雪崩、热 key 怎么治理？
+  - RDB、AOF、混合持久化如何选择？
+  - 主从复制、哨兵和 Cluster 的故障切换风险是什么？
+  - 分布式锁如何保证安全释放？锁过期怎么办？
+  - 大 key 和热 key 如何发现、拆分和治理？
+
+Each Redis answer should connect concept -> data structure/protocol -> production symptom -> mitigation -> monitoring signal.
+
 ## Optimization Checklist
 
 Tie optimization advice to measurable signals:
@@ -232,3 +346,6 @@ Before responding, check:
 - Did it include reliable references with official/GitHub sources where possible?
 - Are the questions difficult enough for mid-to-senior Big Tech interviews?
 - Is the content organized so the user can study from it directly?
+- Does every Q&A include a substantive `完整回答` section?
+- For broad topics, did the artifact include a learning path, interview map, and sprint plan?
+- Would the answer satisfy a P7/P8 interviewer, including follow-up pressure and production tradeoffs?
