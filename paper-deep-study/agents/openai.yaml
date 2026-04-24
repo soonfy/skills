@@ -1,0 +1,7 @@
+interface:
+  display_name: "Paper Deep Study"
+  short_description: "Turn a paper URL, PDF, or DOCX into a beginner-friendly Markdown study note."
+  default_prompt: "Use $paper-deep-study to read this paper URL, PDF, or DOCX, save a deep beginner-friendly Markdown study note, and when the input is a URL, also save the original PDF."
+
+policy:
+  allow_implicit_invocation: true

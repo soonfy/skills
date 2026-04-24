@@ -20,6 +20,13 @@ skills/
 │   ├── SKILL.md
 │   └── agents/
 │       └── openai.yaml
+├── paper-deep-study/
+│   ├── SKILL.md
+│   ├── agents/
+│   │   └── openai.yaml
+│   └── references/
+│       ├── answer-standard.md
+│       └── example-answer-self-evolving-agents-survey.md
 ├── redbook-publisher/
 │   └── SKILL.md
 └── wechat-publisher/
@@ -32,6 +39,7 @@ skills/
 | --- | --- | --- |
 | `ai-daily-interviews` | 生成系统化的技术面试学习笔记，默认达到大厂 P7/P8+ 深度，并保存为 Obsidian 友好的 Markdown 文件。 | `ai-daily-interviews/` |
 | `p7p8-interview-qa` | 围绕一个软件工程知识点生成 3 个递进式大厂 P7/P8 面试问题、完整回答和一个贯穿生产场景，并保存为 `interview-*.md` 文件。 | `p7p8-interview-qa/` |
+| `paper-deep-study` | 读取论文 URL、PDF 或 `.docx`，生成面向计算机新人的深度 Markdown 学习笔记；当输入为 URL 时，同时保存原文 PDF。 | `paper-deep-study/` |
 | `redbook-publisher` | 将 Markdown、笔记、文章、课程内容或知识文档转成小红书 / Redbook 风格图文卡片方案、发布文案或竖版 PNG 卡片。 | `redbook-publisher/` |
 | `wechat-publisher` | 将 Markdown、笔记、文章、课程内容或知识文档转成微信公众号发布包，包括标题、摘要、正文、配图方案、发布检查清单和 Word 文档。 | `wechat-publisher/` |
 
@@ -92,6 +100,36 @@ skills/
 
 ```text
 用 p7p8-interview-qa 生成 MySQL MVCC 的大厂面试问答。
+```
+
+### `paper-deep-study`
+
+面向“论文 / 技术文章深度学习”工作流，适合把论文 URL、PDF 文件或 `.docx` 文档转成一份从浅到深、对计算机新人友好的 Markdown 学习笔记。
+
+主要能力：
+
+- 支持输入论文 URL、PDF 和 `.docx` 文件。
+- 输出结构化的 `paper-study-*.md` 学习笔记。
+- 当输入是 URL 且可下载 PDF 时，会顺手保存原文 PDF。
+- 固定包含作者与机构信息、论文主旨、背景知识、由浅入深讲解、方法 / 系统 / 实验解释、优点与局限、术语表和学习清单。
+- 通过 `references/answer-standard.md` 固化输出结构与质量标准。
+- 通过 `references/example-answer-self-evolving-agents-survey.md` 提供正式示例答案，约束输出风格和深度。
+
+适合场景：
+
+- 精读一篇 arXiv 论文并生成学习笔记。
+- 把 PDF 论文整理成适合新手阅读的中文讲解。
+- 读取 Word 格式的技术白皮书、研究稿件或长文说明，并输出学习笔记。
+- 为后续分享、复习、面试或知识沉淀生成可复用 Markdown 文档。
+
+示例请求：
+
+```text
+使用 paper-deep-study，读这个论文 URL，生成 Markdown 学习笔记和原文 PDF。
+```
+
+```text
+使用 paper-deep-study，读取这个 PDF，帮我从浅到深讲清楚，并保存成 Markdown 文件。
 ```
 
 ### `redbook-publisher`
@@ -172,6 +210,7 @@ macOS / Linux 示例：
 mkdir -p ~/.codex/skills
 cp -R ./ai-daily-interviews ~/.codex/skills/
 cp -R ./p7p8-interview-qa ~/.codex/skills/
+cp -R ./paper-deep-study ~/.codex/skills/
 cp -R ./redbook-publisher ~/.codex/skills/
 cp -R ./wechat-publisher ~/.codex/skills/
 ```
@@ -182,6 +221,7 @@ Windows PowerShell 示例：
 New-Item -ItemType Directory -Force $env:USERPROFILE\.codex\skills
 Copy-Item -Recurse .\ai-daily-interviews $env:USERPROFILE\.codex\skills\
 Copy-Item -Recurse .\p7p8-interview-qa $env:USERPROFILE\.codex\skills\
+Copy-Item -Recurse .\paper-deep-study $env:USERPROFILE\.codex\skills\
 Copy-Item -Recurse .\redbook-publisher $env:USERPROFILE\.codex\skills\
 Copy-Item -Recurse .\wechat-publisher $env:USERPROFILE\.codex\skills\
 ```
@@ -194,6 +234,7 @@ macOS / Linux 示例：
 mkdir -p ~/.agents/skills
 cp -R ./ai-daily-interviews ~/.agents/skills/
 cp -R ./p7p8-interview-qa ~/.agents/skills/
+cp -R ./paper-deep-study ~/.agents/skills/
 cp -R ./redbook-publisher ~/.agents/skills/
 cp -R ./wechat-publisher ~/.agents/skills/
 ```
@@ -204,6 +245,7 @@ Windows PowerShell 示例：
 New-Item -ItemType Directory -Force $env:USERPROFILE\.agents\skills
 Copy-Item -Recurse .\ai-daily-interviews $env:USERPROFILE\.agents\skills\
 Copy-Item -Recurse .\p7p8-interview-qa $env:USERPROFILE\.agents\skills\
+Copy-Item -Recurse .\paper-deep-study $env:USERPROFILE\.agents\skills\
 Copy-Item -Recurse .\redbook-publisher $env:USERPROFILE\.agents\skills\
 Copy-Item -Recurse .\wechat-publisher $env:USERPROFILE\.agents\skills\
 ```
@@ -226,6 +268,10 @@ Copy-Item -Recurse .\p7p8-interview-qa $env:USERPROFILE\.agents\skills\
 
 ```text
 使用 p7p8-interview-qa，围绕 JVM GC 生成 3 道大厂面试题和完整回答。
+```
+
+```text
+使用 paper-deep-study，读这篇论文 URL，生成 Markdown 学习笔记和原文 PDF。
 ```
 
 ```text
